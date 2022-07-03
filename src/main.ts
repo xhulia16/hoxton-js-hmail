@@ -47,9 +47,6 @@ const state = {
   ]
 }
 
-function getImagePath(item){
-  return `assets/${item.name}.svg`
-}
 function renderSingleEmail() {
 
   let mainSection = document.querySelector('main')
@@ -133,11 +130,13 @@ function renderEmailList() {
 
   let listLiEl=document.createElement('li')
   listLiEl.className='emails-list__item'
-
+ 
   if(email.read) listLiEl.classList.add('read')
 
   let listSpanEl=document.createElement('span')
-  listSpanEl.className='emails-list__item__read-icon material-symbols-outlined mark_email_unread'
+  listSpanEl.className='emails-list__item__read-icon material-symbols-outlined'
+  
+  if(email.read) listSpanEl.classList.add('read')
 
   let listImageEl=document.createElement('img')
   listImageEl.className='emails-list__item__image'
