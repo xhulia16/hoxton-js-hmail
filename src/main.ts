@@ -47,6 +47,9 @@ const state = {
   ]
 }
 
+function getImagePath(item){
+  return `assets/${item.name}.svg`
+}
 function renderSingleEmail() {
 
   let mainSection = document.querySelector('main')
@@ -65,6 +68,7 @@ function renderSingleEmail() {
   //architecto earum voluptatibus vel atque.
   //</p>
   //</section>
+  
 
   let emailSectionEl = document.createElement('section')
   emailSectionEl.className = 'single-email'
@@ -116,6 +120,7 @@ function renderEmailList() {
   // </p>
   // </li>
   //</ul>
+ 
 
   let listH1El =document.createElement('h1')
   listH1El.className='emails-list'
@@ -124,31 +129,34 @@ function renderEmailList() {
   let listUlEl=document.createElement('ul')
   listUlEl.className='emails-list'
 
+  for( let email of state.emails){
+
   let listLiEl=document.createElement('li')
   listLiEl.className='emails-list__item'
 
-  let listSpanEl=document.createElement('li')
-  listSpanEl.className='emails-list__item__read-icon material-symbols-outlined'
-  listSpanEl.textContent=' mark_email_unread'
+  if(email.read) listLiEl.classList.add('read')
+
+  let listSpanEl=document.createElement('span')
+  listSpanEl.className='emails-list__item__read-icon material-symbols-outlined mark_email_unread'
 
   let listImageEl=document.createElement('img')
   listImageEl.className='emails-list__item__image'
-  listImageEl.src='assets/nico.JPG'
+  listImageEl.src= email.img
 
   let listPEl=document.createElement('p')
   listPEl.className='emails-list__item__from'
-  listPEl.textContent='Nico'
+  listPEl.textContent=email.from
 
   let listPE2=document.createElement('p')
   listPE2.className='emails-list__item__content'
-  listPE2.textContent="Link to today's video and slides is up!"
+  listPE2.textContent=email.header
 
   listLiEl.append(listSpanEl ,listImageEl, listPEl, listPE2)
   listUlEl.append(listLiEl)
 
   mainSection.append(listUlEl)
 
-}
+}}
 
 renderEmailList()
 
