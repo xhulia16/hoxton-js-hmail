@@ -65,7 +65,7 @@ function renderSingleEmail() {
   //architecto earum voluptatibus vel atque.
   //</p>
   //</section>
-  
+
 
   let emailSectionEl = document.createElement('section')
   emailSectionEl.className = 'single-email'
@@ -117,45 +117,46 @@ function renderEmailList() {
   // </p>
   // </li>
   //</ul>
- 
 
-  let listH1El =document.createElement('h1')
-  listH1El.className='emails-list'
-  listH1El.textContent='Inbox'
 
-  let listUlEl=document.createElement('ul')
-  listUlEl.className='emails-list'
+  let listH1El = document.createElement('h1')
+  listH1El.className = 'emails-list'
+  listH1El.textContent = 'Inbox'
 
-  for( let email of state.emails){
+  let listUlEl = document.createElement('ul')
+  listUlEl.className = 'emails-list'
 
-  let listLiEl=document.createElement('li')
-  listLiEl.className='emails-list__item'
- 
-  if(email.read) listLiEl.classList.add('read')
+  for (let email of state.emails) {
 
-  let listSpanEl=document.createElement('span')
-  listSpanEl.className='emails-list__item__read-icon material-symbols-outlined'
-  
-  if(email.read) listSpanEl.classList.add('read')
+    let listLiEl = document.createElement('li')
+    listLiEl.className = 'emails-list__item'
 
-  let listImageEl=document.createElement('img')
-  listImageEl.className='emails-list__item__image'
-  listImageEl.src= email.img
+    if (email.read) listLiEl.classList.add('read')
 
-  let listPEl=document.createElement('p')
-  listPEl.className='emails-list__item__from'
-  listPEl.textContent=email.from
+    let listSpanEl = document.createElement('span')
+    listSpanEl.className = "emails-list__item__read-icon material-symbols-outlined"
 
-  let listPE2=document.createElement('p')
-  listPE2.className='emails-list__item__content'
-  listPE2.textContent=email.header
+    if (email.read) listSpanEl.classList.add('read')
 
-  listLiEl.append(listSpanEl ,listImageEl, listPEl, listPE2)
-  listUlEl.append(listLiEl)
+    let listImageEl = document.createElement('img')
+    listImageEl.className = 'emails-list__item__image'
+    listImageEl.src = email.img
 
-  mainSection.append(listUlEl)
+    let listPEl = document.createElement('p')
+    listPEl.className = 'emails-list__item__from'
+    listPEl.textContent = email.from
 
-}}
+    let listPE2 = document.createElement('p')
+    listPE2.className = 'emails-list__item__content'
+    listPE2.textContent = email.header
+
+    listLiEl.append(listSpanEl, listImageEl, listPEl, listPE2)
+    listUlEl.append(listLiEl)
+
+    mainSection.append(listUlEl)
+
+  }
+}
 
 renderEmailList()
 
