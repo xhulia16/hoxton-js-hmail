@@ -1,5 +1,14 @@
 import './style.css'
 
+type Email = {
+  from: string,
+  header: string,
+  content: string,
+  emailAddress: string,
+  img: string,
+  read: boolean
+}
+
 const state = {
   emails: [
     {
